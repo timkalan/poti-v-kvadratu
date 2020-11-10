@@ -56,22 +56,56 @@ class Kvadrat:
                     ustrezne.append((a, b))
             
             bliznje[(x, y)] = ustrezne
-        self.koreni = list(bliznje.keys())      # grdo, da je to stranski učinek 
+        #self.koreni = list(bliznje.keys())      # grdo, da je to stranski učinek 
         return bliznje
 
 
 
-    def drevo_najkrajsih_poti(self, koren):
+    def drevo_najkrajsih_poti(self, max_razdalja, koren=0):
         """
         Uporabi Dijkstrov algoritem za izračun drevesa najkrajših poti
         od dane točke. 
 
-        koren = začetna točka, podana kot
+        koren = začetna točka, podana kot zaporedna številka (začnemo z 0)
         """
-        pass
+        koreni = list(self.bliznje(max_razdalja).keys())
+        seznam_sosedov = self.bliznje(max_razdalja)
+
+        try:
+            root = koreni[koren]
+        except IndexError as e:
+            print("Premalo korenov!")
+            print(e)
+            
+        Q = []
+        oddaljenost = dict()
+        oce = dict()
+
+        for vozlisce in seznam_sosedov:
+            oddaljenost[vozlisce] = 1000000        # praktično neskončno za naše namene
+            oce[vozlisce] = None
+            Q.append(vozlisce)
+        oddaljenost[root] = 0
+
+        while Q != []:
+            #u = min(oddaljenost, key=oddaljenost.get)    # vozlišče z min razdaljo
+            u = min({vozl: razd for (vozl, razd) in oddaljenost.items() if vozl in Q}, key=oddaljenost.get)
+            Q.remove(u)                           # odstranimo iz seznama
+
+            for sosed in [nei for nei in seznam_sosedov[u] if nei in Q]:
+                # pogledamo vse sosede u, ki so še v Q
+                alt = oddaljenost[u] + razdalja(u, sosed)
+                if alt < oddaljenost[sosed]:
+                    oddaljenost[sosed] = alt
+                    oce[sosed] = u
+
+        return oddaljenost, oce
 
 
 
-a = Kvadrat(10)
-a.bliznje(0.5)
-print(a.koreni)
+
+a = Kvadrat(500)
+print(a.drevo_najkrajsih_poti(0.5))
+
+
+# TODO: morda dijkstra na bolj učinkovit način
