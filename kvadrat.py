@@ -3,7 +3,7 @@ Hm.
 """
 
 import random
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 def razdalja(tocka0, tocka1):
@@ -13,7 +13,7 @@ def razdalja(tocka0, tocka1):
     # potencialno spremeni, da dela v R^n
     dx = tocka0[0] - tocka1[0]
     dy = tocka0[1] - tocka1[1]
-    return dx**2 + dy**2
+    return (dx**2 + dy**2) ** (1/2)
 
 
 class Kvadrat:
@@ -89,7 +89,8 @@ class Kvadrat:
 
         while Q != []:
             #u = min(oddaljenost, key=oddaljenost.get)    # vozlišče z min razdaljo
-            u = min({vozl: razd for (vozl, razd) in oddaljenost.items() if vozl in Q}, key=oddaljenost.get)
+            u = min({vozl: razd for (vozl, razd) in oddaljenost.items() 
+                if vozl in Q}, key=oddaljenost.get)
             Q.remove(u)                           # odstranimo iz seznama
 
             for sosed in [nei for nei in seznam_sosedov[u] if nei in Q]:
@@ -101,11 +102,19 @@ class Kvadrat:
 
         return oddaljenost, oce
 
+    
+    def narisi(self):
+        plt.scatter(zip(*self.tocke))
 
 
 
-a = Kvadrat(500)
-print(a.drevo_najkrajsih_poti(0.5))
-
+a = Kvadrat(5)
+#print(a.tocke)
+#print(a.bliznje(1))
+#print(a.drevo_najkrajsih_poti(0.5))
+plt.scatter(*zip(*a.tocke))
+#plt.scatter(*zip(*((a.bliznje(0.5).keys())[0])))
+plt.scatter(*zip(*(a.bliznje(1)[list(a.bliznje(1).keys())[0]])))
+plt.show()
 
 # TODO: morda dijkstra na bolj učinkovit način
