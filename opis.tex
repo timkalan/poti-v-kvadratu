@@ -9,7 +9,8 @@
 \usepackage{amsthm}   
 \usepackage{amssymb} 
 
-\title{Poti v kvadratu}
+\title{Poti v kvadratu \\
+       \large Opis projekta}
 \author{Sara Papež, Tim Kalan}
 
 \begin{document}
@@ -19,8 +20,30 @@
 \end{titlepage}
 
 \section{Opis problema}
-\section{Programsko okolje in implementacija}
-\section{Načrt za delo}
+V projektu si bomo ogledali naslednjo situacijo: V enotskem kvadratu si zamislimo 
+množico $P$, ki vsebuje $n$ točk. To množico nato proglasimo za množico vozlišč 
+grafa in povežemo vse točke, ki so oddaljene manj od vnaprej podanega parametra $r$.
+Nato pridobimo drevo najkrajših poti od naključno izbrane točke - \textit{korena}.
 
+Jedro projekta leži v spreminjanju parametra $r$ in števila točk $n$ ter opazovanju 
+dogajanja. Zanimalo nas bo recimo, kako se spreminja dolžina drevesa najkrajših poti,
+kako se spreminja vsota dolžin od korena do ostalih, kako se spreminja dolžina 
+najkrajše in najdaljše poti, ... 
+% tu lahko dodava še poljubna vprašanja
+
+
+\section{Programsko okolje in implementacija}
+Jedro naloge bo vsebovano v razredu Kvadrat, implementiranemu v programskemu jeziku
+\emph{Python}. Zaenkrat načrtujemo, da bomo to jedro potem uvozili v \emph{Jupyter
+notebook} in se tam malo ">igrali"< s parametri in raznimi vizualizacijami.
+
+\section{Načrt za delo}
+Zaenkrat je načrtovana implementacija \emph{Dijkstrovega algoritma} za iskanje 
+drevesa najkrajših poti - če bo le šlo, tudi hitrejšo implementacijo s časovno 
+zahtevnostjo $\mathcal{O}(m + n\log n)$ (kjer je $m$ število povezav) in uporabo 
+prednostne vrste.
+
+Možne posplošitve, ki jih vidimo so v tri dimenzije oz. $n$ dimenzij (kjer vizualni
+aspekt seveda odpade).
 
 \end{document}}
