@@ -108,13 +108,13 @@ class Kvadrat:
 
 
 
-a = Kvadrat(5)
+a = Kvadrat(1000)
 #print(a.tocke)
 #print(a.bliznje(1))
 #print(a.drevo_najkrajsih_poti(0.5))
 plt.scatter(*zip(*a.tocke))
-#plt.scatter(*zip(*((a.bliznje(0.5).keys())[0])))
-plt.scatter(*zip(*(a.bliznje(1)[list(a.bliznje(1).keys())[0]])))
+#plt.scatter(*zip(*((list(a.bliznje(0.3).keys())[0]))))
+plt.scatter(*zip(*(a.bliznje(0.3)[list(a.bliznje(0.3).keys())[0]])))
 plt.show()
 
 # TODO: morda dijkstra na bolj učinkovit način

@@ -1,0 +1,73 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[slovene]{babel}
+\usepackage{lmodern} 
+\usepackage{hyperref}
+\usepackage{amsmath} 
+\usepackage{amsthm}   
+\usepackage{amssymb} 
+
+\title{Poti v kvadratu \\
+       \large Opis projekta}
+\author{Sara Papež, Tim Kalan}
+\date{20.~november 2020}
+
+\begin{document}
+\begin{titlepage}
+ \maketitle
+
+\end{titlepage}
+
+\section{Opis problema}
+V projektu si bomo ogledali naslednjo situacijo: V enotskem kvadratu naključno 
+generiramo $n$ točk in jih zberemo v množico $P$. To množico nato proglasimo 
+za množico vozlišč $V$ grafa $G$ in povežemo vse točke, ki so ena od druge oddaljene 
+manj od vnaprej podanega parametra največje dovoljene razdalje $r$. To nam da torej 
+graf $G = (V, E)$, kjer je $E$ množica povezav, ki je odvisna od paramtera $r$. V 
+nadaljevanju se osredotočimo na računanje drevesa najkrajših poti od naključno 
+izbrane točke - \textit{korena}.
+
+Jedro projekta leži v spreminjanju parametra $r$ in števila točk $n$ ter opazovanju 
+dogajanja. Zanimalo nas bo recimo:
+
+\begin{itemize}
+       \item Kako se spreminja dolžina drevesa najkrajših poti?
+       \item Kako se spreminja vsota dolžin od korena do ostalih?
+       \item Kako se spreminja dolžina najkrajše in najdaljše poti?
+       \item Kater parameter povzroči bolj drastične spremembe?
+       \item ...
+\end{itemize}
+
+
+\section{Programsko okolje in implementacija}
+Odločili smo se za implementacijo v programskem jeziku \emph{Python}, saj smo z njim
+najbolje seznanjeni. Zaenkrat je ideja, da v eno skripto napišemo celotne ">možgane"<
+oz. model: najverjetneje bo to nek razdred Kvadrat, ki bo vseboval generator naključnih 
+točk, generator bližnjih (glede na $r$) točk, algoritem za računanje drevesa nakjrajših 
+poti in pa razne metode za vizualizacijo dobljenih rezultatov. Vizualizacija bo izvedena 
+s pomočjo paketa \emph{Matplotlib}.
+
+To jedro naloge bi potem uvozili v \emph{Jupyter notebook} in v tem okolju dejansko 
+generirali točke, jih vizualizirali, spreminjali parametre in opazovali kaj se dogaja
+z odgovori na zgornja vprašanja.
+
+
+\section{Načrt za delo}
+Zaenkrat je načrtovana implementacija \emph{Dijkstrovega algoritma} za iskanje 
+drevesa najkrajših poti - če bo le šlo, tudi hitrejšo implementacijo s časovno 
+zahtevnostjo $\mathcal{O}(m + n\log n)$ (kjer je $m$ število povezav) in uporabo 
+prednostne vrste. Zanj smo se odločili, saj gre za utežen graf, ki ima 
+nenegativne uteži, različne od ena (zato odpade \emph{iskanje v širino}). 
+
+Poleg spreminjanja parametrov, nas zanima tudi, kaj se dogaja z razdaljami/dolžinami 
+dreves, če poženemo simulacijo večkrat z enakimi parametri. Poleg tega bi bilo zanimivo 
+videti, kako se spreminja čas izvjanja, ko večamo/manjšamo parametre. 
+
+Možne posplošitve, ki jih zaenkrat vidimo so recimo premik v tri dimenzije; torej bi 
+opazovali problem na enotski kocki. Če se izkaže primerjava za zanimivo, bi lahko 
+problem prenesli tudi v $n$ dimenzij, tu bi seveda opustili vizualizacijo. Morda bi 
+bilo zanimivo videti tudi, kaj se zgodi ob generiranju točk glede na kakšno drugo
+porazdelitev, kot enakomerno.
+
+\end{document}}
