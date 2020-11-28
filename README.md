@@ -13,6 +13,10 @@ of the shortest path tree change as n and/or r changes? How does the sum of the
 distances from the root to all other vertices change?
 You may consider it also in 3d.
 
-## Navodila
+## Struktura
 
-Še pridejo
+V datoteki `kvadrat.py` se nahaja razred `Kvadrat` v katerem so implemetirane vse 
+ključne funkcije.
+
+V datoteki `vizualizacija.ipynb` je prikazanih nekaj zmogljivosti razreda `Kvadrat`.
+Tam so prikazane vse jederne funkcionalnosti, ki so (zaenkrat) implementirane.
