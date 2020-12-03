@@ -17,7 +17,7 @@ def razdalja(tocka0, tocka1):
     razdalja = 0
     for i in range(len(tocka0)):
         dx = tocka0[i] - tocka1[i]
-        razdalja += dx **2
+        razdalja += dx ** 2
 
     return razdalja ** (1/2)
 
@@ -353,14 +353,7 @@ class Kocka(Kvadrat):
                 y0, y1 = pred[1], nasl[1]
                 z0, z1 = pred[2], nasl[2]
                 plt.plot([x0, x1], [y0, y1], [z0, z1], color='#23FF00')
-    
 
-demo3D = Kocka(100, 0.3)
-
-demo3D.narisi_tocke()
-demo3D.narisi_bliznje()
-
-plt.show()
 
 
 # TODO: dijkstra na bolj učinkovit način
