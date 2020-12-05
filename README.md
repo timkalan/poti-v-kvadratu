@@ -16,7 +16,11 @@ You may consider it also in 3d.
 ## Struktura
 
 V datoteki `kvadrat.py` se nahaja razred `Kvadrat` v katerem so implemetirane vse 
-ključne funkcije.
+ključne funkcije. razred `Kocka` si deli večino funkcionalnosti, le da se zadeva 
+prestavi v tri dimenzije.
 
 V datoteki `vizualizacija.ipynb` je prikazanih nekaj zmogljivosti razreda `Kvadrat`.
-Tam so prikazane vse jederne funkcionalnosti, ki so (zaenkrat) implementirane.
+Tam so prikazane vse jederne funkcionalnosti, ki so (zaenkrat) implementirane. Seveda
+so demonstrirane tudi funkcionalnosti razreda `Kocka`. 
+
+V datoteki `izracuni.ipynb` so prikazani nekateri rezultati eksperimentov.

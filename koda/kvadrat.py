@@ -362,3 +362,4 @@ class Kocka(Kvadrat):
 # TODO: 3D
 # TODO: da se nariše katera vozlišča so dosežena in katera ne - morda računa razmerje
 # TODO: oznake na osi
+# TODO; dijkstra ne dela sploh????
