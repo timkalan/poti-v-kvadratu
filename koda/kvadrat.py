@@ -68,7 +68,7 @@ class Kvadrat:
         pass
 
 
-    def drevo_najkrajsih_poti(self, koren=0):
+    def drevo_najkrajsih_poti_pocasi(self, koren=0):
         """
         Uporabi Dijkstrov algoritem za izračun drevesa najkrajših poti
         od dane točke. 
@@ -116,7 +116,8 @@ class Kvadrat:
         return oddaljenost, oce
 
 
-    def drevo_najkrajsih_poti_hitro(self, koren=0):
+    # to je hitrejša verzija, ki uporablja prednostno vrsto
+    def drevo_najkrajsih_poti(self, koren=0):
         """
         Uporabi Dijkstrov algoritem za izračun drevesa najkrajših poti
         od dane točke. Izvajaje je pohitreno s pomočjo prednostne vrste.
@@ -125,7 +126,7 @@ class Kvadrat:
         """
         # za vsako točko dobimo njene sosede
         seznam_sosedov = self.bliznje()
-        
+
         # koreni so vse točke ki so si dovolj blizu
         koreni = list(seznam_sosedov.keys())
 
@@ -142,26 +143,29 @@ class Kvadrat:
         oddaljenost = dict()
         oce = dict()
 
+        oddaljenost[root] = 0
+
         for vozlisce in seznam_sosedov:
+            oce[vozlisce] = None
             if vozlisce != root:
                 oddaljenost[vozlisce] = 1000000        # praktično neskončno za naše namene
-                oce[vozlisce] = None
 
             prioriteta = oddaljenost.get(vozlisce)
             Q.put((prioriteta, vozlisce))
 
-        oddaljenost[root] = 0
-
         while not Q.empty():
             # določimo vozlišče z minimalno oddaljenostjo, ki je še v Q
-            u = Q.get()   # odstranimo iz seznama in vrnemo najboljšega
+            dist, u = Q.get()     # odstranimo iz seznama in vrnemo najboljšega
+
+
 
             # pregledamo vse sosede opazovanega vozlišča, ki so še v Q
-            for sosed in [nei for nei in seznam_sosedov[u] if nei in Q]:
+            for sosed in seznam_sosedov[u]:
                 alt = oddaljenost[u] + razdalja(u, sosed)
                 if alt < oddaljenost[sosed]:
                     oddaljenost[sosed] = alt
                     oce[sosed] = u
+                    Q.put((alt, sosed))
 
         return oddaljenost, oce
     
@@ -251,6 +255,24 @@ class Kvadrat:
         Nariše drevo najkrajših poti, ki se začne v izbranem korenu.
         """
         _, oce = self.drevo_najkrajsih_poti(koren)
+        
+        # narišemo koren - zorder prisili, da je narisan kot vrhnji element grafa
+        plt.scatter(self.root[0], self.root[1], marker='s', color='#FF0000', zorder=1000000)
+        
+        # pregledamo slovar očetov
+        for pred, nasl in oce.items():
+            # če ima 'sina', ga narišemo
+            if nasl != None:
+                x0, x1 = pred[0], nasl[0]
+                y0, y1 = pred[1], nasl[1]
+                plt.plot([x0, x1], [y0, y1], color='#23FF00')
+
+    
+    def narisi_drevo_hitro(self, koren=0):
+        """
+        Nariše drevo najkrajših poti, ki se začne v izbranem korenu.
+        """
+        _, oce = self.drevo_najkrajsih_poti_hitro(koren)
         
         # narišemo koren - zorder prisili, da je narisan kot vrhnji element grafa
         plt.scatter(self.root[0], self.root[1], marker='s', color='#FF0000', zorder=1000000)
@@ -356,10 +378,9 @@ class Kocka(Kvadrat):
 
 
 
+
 # TODO: dijkstra na bolj učinkovit način
 # TODO: razmisli, če lahko na učinkovit način implemetiraš bliznje
 # TODO: morda kakšne animacije, če se to da
 # TODO: 3D
 # TODO: da se nariše katera vozlišča so dosežena in katera ne - morda računa razmerje
-# TODO: oznake na osi
-# TODO; dijkstra ne dela sploh????
