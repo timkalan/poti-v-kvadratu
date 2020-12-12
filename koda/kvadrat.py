@@ -64,10 +64,6 @@ class Kvadrat:
         return bliznje
 
 
-    def dosezena(self, koren=0):
-        pass
-
-
     def drevo_najkrajsih_poti_pocasi(self, koren=0):
         """
         Uporabi Dijkstrov algoritem za izračun drevesa najkrajših poti
