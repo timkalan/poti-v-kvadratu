@@ -33,4 +33,5 @@ To poročilo potem prevedeno v `porocilo_kratko.pdf`, kjer je koda skrita. Poro�
 tej verziji bolj strnjeno, a so prisotne tudi morebitne napake, ki so nastajale pri avtomatskem 
 procesu prevajanja. Za tovrstne napake se opravičujemo. Prav tako so skriti vsi "nepovprečeni" grafi, 
 zato so nekateri komentarji morda na prvi pogled malo čudno strukturirani. Zakritih je tudi nekaj drugih 
-grafov, saj se zaradi velike količine vizualizacij nabere kar nekaj strani.
+grafov, saj se zaradi velike količine vizualizacij nabere kar nekaj strani. Poročilo je vseeno 
+nekoliko daljše, to pa je posledica tega, da smo se prvič srečali z izvažanjem Jupyter notebooka.
