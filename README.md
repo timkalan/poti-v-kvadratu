@@ -23,12 +23,13 @@ V datoteki `koda/vizualizacija.ipynb` je prikazanih nekaj zmogljivosti razreda `
 Tam so prikazane vse jederne funkcionalnosti, ki se tičejo vizualizacije - risanja 
 točk, grafov, dreves, ... Seveda so demonstrirane tudi funkcionalnosti razreda `Kocka`. 
 
-V datoteki `koda/izracuni.ipynb` so prikazani rezultati eksperimentov. Večina jih je vklkjučena 
+V datoteki `koda/izracuni.ipynb` so prikazani rezultati eksperimentov. Večina jih je vključena 
 tudi v poročilu.
 
 Poročilo ima dve verziji: v `porocilo_dolgo.ipynb` je predstavjeno poročilo, in vsa izvorna koda, 
 ki ga poganja. Je bolj nazorna verzija, iz katere lahko pridobimo tudi precej znanja in vpogled v 
-celotni kodi. To poročilo potem prevedeno v `porocilo_kratko.pdf`, kjer je koda skrita. Poročilo je zato v 
+celotni kodi. Hkrati to poročilo služi za namene predstavitve na ustnem zagovoru.
+To poročilo potem prevedeno v `porocilo_kratko.pdf`, kjer je koda skrita. Poročilo je zato v 
 tej verziji bolj strnjeno, a so prisotne tudi morebitne napake, ki so nastajale pri avtomatskem 
 procesu prevajanja. Za tovrstne napake se opravičujemo. Prav tako so skriti vsi "nepovprečeni" grafi, 
 zato so nekateri komentarji morda na prvi pogled malo čudno strukturirani. Zakritih je tudi nekaj drugih 
